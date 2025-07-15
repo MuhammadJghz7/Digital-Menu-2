@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>QR منو</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+  <h2>📱 QR کد منو</h2>
+  <canvas id="qr"></canvas>
+  <script>
+    const qr = new QRious({
+      element: document.getElementById("qr"),
+      value: "https://yourdomain.com/index.html", // آدرس واقعی منو
+      size: 200
+    });
+  </script>
+</body>
+</html>
