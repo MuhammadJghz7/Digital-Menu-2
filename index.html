@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>منوی دیجیتال</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="page-title">منوی دیجیتال رستوران</h1>
+  <button id="lang-button" onclick="toggleLang()">🇬🇧 English</button>
+  <h2 id="menu-title">منو</h2>
+
+  <div id="menu"></div>
+
+  <h2>🛒 سبد خرید</h2>
+  <div id="cart"></div>
+  <button id="order-button" onclick="generateReceipt()">✅ ثبت سفارش و چاپ رسید</button>
+
+  <div id="receipt" style="display: none; padding: 20px; border: 1px solid #ccc;">
+    <h2>🧾 رسید سفارش</h2>
+    <div id="receipt-content"></div>
+  </div>
+
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
