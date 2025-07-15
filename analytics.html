@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>آمار فروش</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="auth.js"></script>
+  <script>checkAuth();</script>
+</head>
+<body>
+  <h2>📊 داشبورد فروش غذاها</h2>
+  <canvas id="salesChart" width="800" height="400"></canvas>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const foodSales = {};
+
+    orders.forEach(order => {
+      order.items.forEach(item => {
+        if (!foodSales[item.name]) {
+          foodSales[item.name] = { count: 0, revenue: 0 };
+        }
+        foodSales[item.name].count += item.count;
+        foodSales[item.name].revenue += item.count * item.price;
+      });
+    });
+
+    const labels = Object.keys(foodSales);
+    const countData = labels.map(name => foodSales[name].count);
+    const revenueData = labels.map(name => foodSales[name].revenue);
+
+    new Chart(document.getElementById("salesChart").getContext("2d"), {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "تعداد سفارش",
+            data: countData,
+            backgroundColor: "rgba(255, 99, 132, 0.6)",
+          },
+          {
+            label: "درآمد (تومان)",
+            data: revenueData,
+            backgroundColor: "rgba(54, 162, 235, 0.6)",
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: value => value.toLocaleString() + " تومان"
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
