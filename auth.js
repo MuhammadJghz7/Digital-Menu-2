@@ -1,5 +1,5 @@
 function login(password) {
-  if (password === "1234") {
+  if (password === "12345") {
     localStorage.setItem("auth", "true");
     location.href = "admin.html";
   } else {
