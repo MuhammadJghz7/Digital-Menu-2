@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>پنل مدیریت</title>
+  <script src="auth.js"></script>
+  <script>checkAuth();</script>
+</head>
+<body>
+  <h1>🎛 پنل مدیریت غذا</h1>
+  <button onclick="logout()">🚪 خروج</button>
+  <form onsubmit="addFood(event)">
+    <input placeholder="نام غذا" id="name">
+    <input placeholder="قیمت" id="price" type="number">
+    <input placeholder="ترکیبات" id="ingredients">
+    <input placeholder="آدرس عکس" id="image">
+    <input placeholder="گروه غذایی" id="group">
+    <input placeholder="ساعت شروع (اختیاری)" id="startTime">
+    <input placeholder="ساعت پایان (اختیاری)" id="endTime">
+    <button type="submit">➕ افزودن غذا</button>
+  </form>
+  <div id="food-list"></div>
+  <script src="script.js"></script>
+</body>
+</html>
